@@ -6,8 +6,6 @@ const playerChoiceEl = document.getElementById("playerChoice");
 const computerScoreEl = document.getElementById("computerScore");
 const computerChoiceEl = document.getElementById("computerChoice");
 
-const resultText = document.getElementById("resultText");
-
 const playerRock = document.getElementById("playerRock");
 const playerPaper = document.getElementById("playerPaper");
 const playerScissors = document.getElementById("playerScissors");
@@ -21,6 +19,7 @@ const computerLizard = document.getElementById("computerLizard");
 const computerSpock = document.getElementById("computerSpock");
 
 const allGameIcons = document.querySelectorAll(".far");
+const resultText = document.getElementById("resultText");
 
 const choices = {
   rock: { name: "Rock", defeats: ["scissors", "lizard"] },
@@ -39,6 +38,7 @@ function resetSelected() {
   allGameIcons.forEach((icon) => {
     icon.classList.remove("selected");
   });
+  stopConfetti();
   removeConfetti();
 }
 
@@ -82,7 +82,7 @@ function displayComputerChoice(playerChoice) {
 
     case "paper":
       computerPaper.classList.add("selected");
-      playerChoiceEl.textContent = " --- Paper";
+      computerChoiceEl.textContent = " --- Paper";
       break;
 
     case "scissors":
@@ -98,6 +98,8 @@ function displayComputerChoice(playerChoice) {
     case "spock":
       computerSpock.classList.add("selected");
       computerChoiceEl.textContent = " --- Spock";
+      break;
+    default:
       break;
   }
 }
@@ -157,6 +159,8 @@ function select(playerChoice) {
     case "spock":
       playerSpock.classList.add("selected");
       playerChoiceEl.textContent = " --- Spock";
+      break;
+    default:
       break;
   }
 }
